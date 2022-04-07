@@ -5,6 +5,7 @@ const Music = require('../models/musics')
 router.post('/adicionar', (req, res) => {
     const {name, url} = req.body;
 
+    const music = Music.create(req.body);
     
 
     res.send({music});
