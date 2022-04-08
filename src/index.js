@@ -9,5 +9,6 @@ app.use(bodyParser.urlencoded({extended: false})); //permitindo requisições GE
 
 require('./controllers/authController')(app);
 require('./controllers/projectController')(app);
+require('./controllers/playlistController')(app);
 
 app.listen(3030, () => console.log('Rodando em http://localhost:3030'))
