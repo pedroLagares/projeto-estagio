@@ -4,13 +4,20 @@ const Music = require('../models/musics')
 
 router.post('/adicionar', async (req, res) => {
     try {
-        const {name, url} = req.body
+        const id = req.params.id;
+        const {name, url} = req.body;
+
+        const music = {
+            name: name,
+            url: url
+        }
 
         if (await Music.findOne({url})) {
-            return res.status(400).send({error: "Musica já existente"})
+            await Music.updateOne({_id: id}, music);
         }
-        const music = await Music.create(req.body);   
-        return res.send({music});
+        
+        const newMusic = await Music.create(req.body);   
+        return res.send({newMusic});
 
     } catch (err) {
         return res.status(400).send({error: "Falha"});
@@ -50,7 +57,7 @@ router.delete('/deletar/:id', async (req, res) => {
 router.get('/listar', async (req, res) => {
     try {
         const musics = await Music.find();
-        return res.send({musics});
+        return res.status(200).send({musics});
 
     } catch (err) {
         return res.status(400).send({error: "Falha"});

@@ -33,11 +33,11 @@ router.post('/login', async (req, res) => {
     const user = await User.findOne({ email }).select('+password');
 
     if (!user) {
-        return res.status(400).send({error: "Usuário não encontrado"});
+        return res.status(404).send({error: "Usuário não encontrado"});
     }
 
     if (password != user.password) {
-        return res.status(400).send({error: "Senha incorreta"});
+        return res.status(203).send({error: "Senha incorreta"});
     }
     
     user.password = undefined;
