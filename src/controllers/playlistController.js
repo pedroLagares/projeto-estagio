@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Music = require('../models/musics')
+const api = require('../api/api-playlist')
 
 router.post('/adicionar', async (req, res) => {
     try {
