@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors')
+const { config } = require('nodemon');
 
 const app = express();
 app.use(cors());

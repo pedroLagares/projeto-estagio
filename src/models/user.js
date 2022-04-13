@@ -16,6 +16,7 @@ const UserSchema = new mongoose.Schema({
         required: true,
         select: false,
     },
+    musics: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Music'}],
     DtCreate: {
         type: Date,
         default: Date.now,
