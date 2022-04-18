@@ -14,4 +14,8 @@ router.post('/logout', async (req, res) => {
     res.end();
 })
 
+router.get('/getUser', api.verifyJWT, async (req, res) => {
+    api.getUser(req, res);
+})
+
 module.exports = app => app.use('/auth', router)
